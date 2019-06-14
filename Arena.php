@@ -143,8 +143,8 @@ class Arena implements Listener {
 		$player = $event->getPlayer();
 		$name = $player->getName();
 		$this->broadcastMessage("§r§f{$name}§e joined the game §e(§b".count($this->players)."/{$this->data["slots"]}§e)");
-		$player->getInventory()->setItem(0, Item::get(261, 0, 1)->setCustomName("§eKits §7(§fTap to use§7)"));
-		$player->getInventory()->setItem(8, Item::get(355, 14, 1)->setCustomName("§cBack To Hub §5(§fTap to use§5)"));
+		$player->getInventory()->setItem(1, Item::get(261, 0, 1)->setCustomName("§eKits §7(§fTap to use§7)"));
+		$player->getInventory()->setItem(5, Item::get(355, 14, 1)->setCustomName("§cBack To Hub §5(§fTap to use§5)"));
 	}
 
     /**
@@ -193,11 +193,11 @@ class Arena implements Listener {
      
         $this->broadcastMessage("§l§cSTART", self::MSG_TITLE);
 		$this->broadcastMessage("§eGame started!");
-		$this->broadcastMessage("§l§a=============================");
-		$this->broadcastMessage("                    §l§eSKY§6WARS         ");
+		$this->broadcastMessage("§l§6=============================");
+		$this->broadcastMessage("                    §l§cSKY§bWARS         ");
 		$this->broadcastMessage("§bThe game has started! Be the last player to win!");
-		$this->broadcastMessage("§l§a=============================");
-		$player->getInventory()->setItem(8, Item::get(0, 0, 0));
+		$this->broadcastMessage("§l§6=============================");
+		$player->getInventory()->setItem(5, Item::get(0, 0, 0));
 	}
 
     public function startRestart() {
@@ -218,14 +218,14 @@ class Arena implements Listener {
 		$player->sendMessage("§eEarned §610§9 Coins§e for Playing");
 		$player->sendMessage("\n");
 		$player->sendMessage("§a=====================================");
-		$player->sendMessage("§6+100 Coins Total");
+		$player->sendMessage("§6+50 Coins Total");
         $this->plugin->getServer()->getPluginManager()->callEvent(new PlayerArenaWinEvent($this->plugin, $player, $this));
         $this->plugin->getServer()->broadcastMessage("§l§eStar-SkyWars§r§7>§b Player §f{$player->getName()}§b won the skywars game on arena §b{$this->level->getFolderName()}!");
 		$player->getInventory()->clearAll();
 		$player->getArmorInventory()->clearAll();
         $player->getCursorInventory()->clearAll();
 		$player->getInventory()->setItem(8, Item::get(355, 0, 1)->setCustomName("§cBack To Hub §7(§fTap to use§7)"));
-		EconomyAPI::getInstance()->addMoney($player, 100);
+		EconomyAPI::getInstance()->addMoney($player, 50);
         $this->phase = self::PHASE_RESTART;
     }
 

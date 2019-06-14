@@ -74,9 +74,9 @@ class SkyWars extends PluginBase implements Listener {
 
         switch ($args[0]) {
             case "help":
-                $player->sendMessage("§f----------[§l§b SKYWARS §r§f]----------");
+                $player->sendMessage("§f----------[§l§c SKYWARS §r§f]----------");
 				$player->sendMessage("You dont need to know");
-				$player->sendMessage("§f----------[§l§b SKYWARS §r§f]----------");
+				$player->sendMessage("§f----------[§l§c SKYWARS §r§f]----------");
                 break;
             case "slots":
                 if(!isset($args[1])) {
@@ -84,46 +84,46 @@ class SkyWars extends PluginBase implements Listener {
                     break;
                 }
                 $arena->data["slots"] = (int)$args[1];
-                $player->sendMessage("[§l§bSW§r§f]§b Slots updated to $args[1]!");
+                $player->sendMessage("[§l§cSW§r§f]§b Slots updated to $args[1]!");
                 break;
             case "level":
                 if(!isset($args[1])) {
-                    $player->sendMessage("[§l§bSW§r§f]§b §7level <levelName>");
+                    $player->sendMessage("[§l§cSW§r§f]§b §7level <levelName>");
                     break;
                 }
                 if(!$this->getServer()->isLevelGenerated($args[1])) {
-                    $player->sendMessage("[§l§bSW§r§f]§b Level $args[1] does not found!");
+                    $player->sendMessage("[§l§cSW§r§f]§b Level $args[1] does not found!");
                     break;
                 }
-                $player->sendMessage("[§l§bSW§r§f]§b Arena level updated to $args[1]!");
+                $player->sendMessage("[§l§cSW§r§f]§b Arena level updated to $args[1]!");
                 $arena->data["level"] = $args[1];
                 break;
             case "spawn":
                 if(!isset($args[1])) {
-                    $player->sendMessage("[§l§bSW§r§f]§b §7setspawn <int: spawn>");
+                    $player->sendMessage("[§l§cSW§r§f]§b §7setspawn <int: spawn>");
                     break;
                 }
                 if(!is_numeric($args[1])) {
-                    $player->sendMessage("[§l§bSW§r§f]§b §cType number!");
+                    $player->sendMessage("[§l§cSW§r§f]§b §cType number!");
                     break;
                 }
                 if((int)$args[1] > $arena->data["slots"]) {
-                    $player->sendMessage("[§l§bSW§r§f]§b §cThere are only {$arena->data["slots"]} slots!");
+                    $player->sendMessage("[§l§cSW§r§f]§b §cThere are only {$arena->data["slots"]} slots!");
                     break;
                 }
 
                 $arena->data["spawns"]["spawn-{$args[1]}"] = (new Vector3($player->getX(), $player->getY(), $player->getZ()))->__toString();
-                $player->sendMessage("[§l§bSW§r§f]§b §a> Spawn $args[1] set to X: " . (string)round($player->getX()) . " Y: " . (string)round($player->getY()) . " Z: " . (string)round($player->getZ()));
+                $player->sendMessage("[§l§cSW§r§f]§b §a> Spawn $args[1] set to X: " . (string)round($player->getX()) . " Y: " . (string)round($player->getY()) . " Z: " . (string)round($player->getZ()));
                 break;
             case "joinsign":
-                $player->sendMessage("[§l§bSW§r§f]§b §a> Break block to set joinsign!");
+                $player->sendMessage("[§l§cSW§r§f]§b §a> Break block to set joinsign!");
                 $this->setupData[$player->getName()] = 0;
                 break;
             case "savelevel":
                 if(!$arena->level instanceof Level) {
-                    $player->sendMessage("[§l§bSW§r§f]§b §c> Error when saving level: world not found.");
+                    $player->sendMessage("[§l§cSW§r§f]§b §c> Error when saving level: world not found.");
                     if($arena->setup) {
-                        $player->sendMessage("[§l§bSW§r§f]§b §6> Try save level after enabling the arena.");
+                        $player->sendMessage("[§l§cSW§r§f]§b §6> Try save level after enabling the arena.");
                     }
                     break;
                 }

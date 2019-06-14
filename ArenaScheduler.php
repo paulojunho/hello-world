@@ -98,13 +98,13 @@ class ArenaScheduler extends Task {
                 }
                 else {
 					$t = str_repeat(" ", 65);
-                    $this->plugin->broadcastMessage($t. "§l§eSky§6wars §cInsane §r§7\n" .$t. "§cWaiting for players..." .str_repeat("\n", 20), Arena::MSG_TIP);
+                    $this->plugin->broadcastMessage($t. "§l§CSky§Bwars §cInsane §r§7\n" .$t. "§cWaiting for players..." .str_repeat("\n", 20), Arena::MSG_TIP);
                     $this->startTime = 30;
                 }
                 break;
             case Arena::PHASE_GAME:
 			    $t = str_repeat(" ", 65);
-                $this->plugin->broadcastMessage($t. "§l§eSky§6wars §cInsane §r§7| §l§eStar-SkyWars§r\n" .$t. "§fAlive: §a" .count($this->plugin->players). "§r\n" .$t. "§fEnd in: §a" .Time::calculateTime($this->gameTime)."§r\n". $t. "§fMap: §a{$this->plugin->level->getFolderName()}\n". $t. "§fMode: §cInsane\n". str_repeat("\n", 20), Arena::MSG_TIP);
+                $this->plugin->broadcastMessage($t. "§l§CSky§Bwars §cInsane §r§7| §l§eStar-SkyWars§r\n" .$t. "§fAlive: §a" .count($this->plugin->players). "§r\n" .$t. "§fEnd in: §a" .Time::calculateTime($this->gameTime)."§r\n". $t. "§fMap: §a{$this->plugin->level->getFolderName()}\n". $t. "§fMode: §cInsane\n". str_repeat("\n", 20), Arena::MSG_TIP);
                 switch ($this->gameTime) {
                     case 15 * 60:
                         $this->plugin->broadcastMessage("§eAll chest will being refill in 5 minutes!");
@@ -155,7 +155,7 @@ class ArenaScheduler extends Task {
         if(!$signPos->getLevel() instanceof Level) return;
 
         $signText = [
-            "§l§eSky§6wars",
+            "§l§CSky§Bwars",
             "§9[ §b? / ? §9]",
             "§6Setup",
             "§6Wait few sec..."
